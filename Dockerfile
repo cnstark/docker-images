@@ -16,8 +16,10 @@ RUN apt-get update && \
     openssl \
     libffi-dev \
     ca-certificates \
-    augeas-lenses dh-python libaugeas0 libmpdec2 libpython3-stdlib libpython3.5-minimal libpython3.5-stdlib python-pip-whl
-  python-pkg-resources python-virtualenv python3 python3-minimal python3-pkg-resources python3-virtualenv python3.5
-  python3.5-minimal virtualenv
+    augeas-lenses dh-python libaugeas0 libmpdec2 libpython3-stdlib \
+    libpython3.5-minimal libpython3.5-stdlib python-pip-whl \
+    python-pkg-resources python-virtualenv python3 python3-minimal \
+    python3-pkg-resources python3-virtualenv python3.5 \
+    python3.5-minimal virtualenv
 # RUN echo c | certbot-auto
 
