@@ -212,7 +212,7 @@ fi
 # to the command line arguments to ensure we don't try to acquire root a
 # second time. After the script is rerun, we exit the current script.
 RerunWithArgs() {
-    "$0" --cb-auto-has-root "$@"
+    # "$0" --cb-auto-has-root "$@"
     exit 0
 }
 
@@ -1474,7 +1474,7 @@ UNLIKELY_EOF
     say "Certbot is installed."
     exit 0
   fi
-
+###################################################################################################################################
   # "$VENV_BIN/letsencrypt" "$@"
 
 else
