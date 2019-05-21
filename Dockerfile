@@ -6,7 +6,4 @@ ADD certbot-auto /usr/local/bin/certbot-auto
 ADD install /install
 RUN chown root /usr/local/bin/certbot-auto && \
     chmod 0755 /usr/local/bin/certbot-auto && \
-    chown root /install && \
-    chmod 0755 /install && \
-    /install && \
-    rm /install
+    certbot-auto --install-only
