@@ -1,4 +1,4 @@
 FROM nginx:latest
 
 RUN apt-get update && \
-    apt-get install certbot python-certbot-nginx
+    apt-get install -y certbot python-certbot-nginx
