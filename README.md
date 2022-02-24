@@ -1,5 +1,7 @@
 # Official nginx docker image with certbot
 
+[![docker build](https://github.com/cnstark/nginx-with-certbot/actions/workflows/docker-build.yml/badge.svg)](https://hub.docker.com/repository/docker/yuhaow/nginx)
+
 ## Base Usage
 
 See [Docker Hub](https://hub.docker.com/_/nginx)
