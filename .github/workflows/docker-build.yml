@@ -15,12 +15,7 @@ jobs:
         run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build docker image
-        run: |
-          docker pull nginx:latest
-          version=`docker run -it --rm nginx:latest bash -c "nginx -version"`
-          echo $version
-          docker build -t yuhaow/nginx:latest .
-          docker tag yuhaow/nginx:latest yuhaow/nginx:${version:21}
+        run: ./build.sh
 
       - name: Push docker image
-        run: docker push -a yuhaow/nginx
+        run: docker push -a ${{ secrets.DOCKER_USERNAME }}/nginx
