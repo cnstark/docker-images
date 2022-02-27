@@ -1,0 +1,50 @@
+name: Build Docker Image (texlive)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "texlive"
+      - ".github/workflows/docker-build-texlive.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login DockerHub
+        run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build docker image (basic)
+        run: |
+          cd texlive
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/texlive:${SCHEME} --build-arg SCHEME=${SCHEME} .
+        env:
+          SCHEME: basic
+      
+      - name: Build docker image (small)
+        run: |
+          cd texlive
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/texlive:${SCHEME} --build-arg SCHEME=${SCHEME} .
+        env:
+          SCHEME: small
+      
+      - name: Build docker image (medium)
+        run: |
+          cd texlive
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/texlive:${SCHEME} --build-arg SCHEME=${SCHEME} .
+        env:
+          SCHEME: medium
+      
+      - name: Build docker image (full)
+        run: |
+          cd texlive
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/texlive:${SCHEME} --build-arg SCHEME=${SCHEME} .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/texlive:${SCHEME} ${{ secrets.DOCKER_USERNAME }}/texlive:latest
+        env:
+          SCHEME: full
+
+      - name: Push docker image
+        run: docker push -a ${{ secrets.DOCKER_USERNAME }}/texlive
